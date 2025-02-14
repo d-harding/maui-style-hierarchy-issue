@@ -6,8 +6,12 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Style TargetType="Button">
-                <Setter Property="Margin" Value="10" />
+            <!--  Unsuccessful hack, breaks DeepPink  -->
+            <!--<Style BasedOn="{StaticResource buttonStyle}" TargetType="Button" />-->
+
+            <!--  Both buttons are DeepPink and only Button with Style of buttonStyle is applied Margin  -->
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="Margin" Value="50" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -21,6 +25,13 @@
                 Text="Button TextColor is DeepPink in Styles.xaml, but ContentPage.Resources has a Margin and TextColor from Styles.xaml is lost" />
             <Button
                 x:Name="CounterBtn"
+                Clicked="OnCounterClicked"
+                HorizontalOptions="Fill"
+                SemanticProperties.Hint="Counts the number of times you click"
+                Style="{DynamicResource buttonStyle}"
+                Text="Click me" />
+            <Button
+                x:Name="CounterBtn2"
                 Clicked="OnCounterClicked"
                 HorizontalOptions="Fill"
                 SemanticProperties.Hint="Counts the number of times you click"
